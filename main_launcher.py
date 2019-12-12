@@ -74,7 +74,7 @@ if __name__ == '__main__':
     max_acc_uni = 0.9 #Accuracy threshold
 
     p_norm = 2 #lp norm
-    norm_bound = 0.0015 #norm bound for the perturbation (under the specified lp norm)
+    norm_bound = 0.1 #norm bound for the perturbation (under the specified lp norm)
 
     #Train files
     input_files_path = base_path + "training_files.npy"
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     results_folder = base_path
     print("Results folder: " + results_folder)
 
-    cmd = "python3 Universal_perturbations_UAP_HC.npy"
+    cmd = "python3 Universal_perturbations_UAP_HC.py"
     cmd = cmd + " -i "  + input_files_path        
     cmd = cmd + " -vi " + input_files_valid_path 
     cmd = cmd + " -m "  + model_path                    

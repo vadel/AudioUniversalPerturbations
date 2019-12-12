@@ -257,7 +257,7 @@ class Attack:
 
         #Vectors containing the fooling rates for the validation dataset
         fooling_rates_vec_valid = np.zeros([max_iter_uni]) #one per "epoch"
-        fooling_rates_vec_full_valid = np.zeros([max_iter_uni*num_samples]) #one per iteration (per modification)
+        #The fooling rate per iteration (per modificaiton) will not be computed for efficiency purposes
 
         #Matrix to store, for each sample, the dB difference at each iteration
         db_diff_max_vec  = np.zeros([num_samples, max_iter_uni])             #Training set
@@ -380,7 +380,7 @@ class Attack:
                 #Save the perturbation
                 v_mat_full[itr*num_samples + k, :] = v.flatten()
                         
-            # Perturb the dataset and compute the fooling rate
+            # Perturb the dataset and compute the fooling rate on the training set
             dataset_perturbed = dataset_ + v
             est_labels_pert = np.zeros((num_samples))
             for ii in range(0, num_samples):
@@ -395,6 +395,21 @@ class Attack:
             fooling_rates_vec[itr] = fooling_rate
 
 
+            # Perturb the dataset and compute the fooling rate on the validation set
+            valid_dataset_perturbed = validation_set + v
+            est_labels_pert_valid = np.zeros((num_samples_valid))
+            for ii in range(0, num_samples_valid):
+                ii_perturbed_valid = valid_dataset_perturbed[ii, :].reshape(1,16000)
+                logits_pert_valid = self.f(ii_perturbed_valid)
+                est_labels_pert_valid[ii] = np.argmax(logits_pert_valid, axis=1).flatten()
+
+            # Compute the fooling rate
+            fooling_rate_valid = float(np.sum(est_labels_pert_valid != est_labels_orig_valid) / float(num_samples_valid))
+            print('FOOLING RATE (VALID) = ', fooling_rate_valid)
+            print(est_labels_pert_valid)
+            fooling_rates_vec_valid[itr] = fooling_rate_valid
+
+
             #Decibels difference of the perturbation and the audio
             db_diff_max = 20*np.log10(np.max(np.abs(v))) - 20*np.log10(np.max(np.abs(dataset_), axis=1))
             db_diff_max_vec[:,itr] = db_diff_max.flatten()
@@ -402,6 +417,7 @@ class Attack:
             db_diff_max_valid = 20*np.log10(np.max(np.abs(v))) - 20*np.log10(np.max(np.abs(validation_set), axis=1))
             db_diff_max_vec_valid[:,itr] = db_diff_max_valid.flatten()
             
+
             #Save the perturbation as wav file
             v_unscaled = np.array(np.clip(np.round(np.clip(v,-1.0,1.0)*(1<<15)), -2**15, 2**15-1),dtype=np.int16)
             v_mat[itr,:] = v
@@ -417,7 +433,7 @@ class Attack:
             itr = itr + 1
                     
         return  v_mat, \
-                fooling_rates_vec_full, fooling_rates_vec_full_valid, \
+                fooling_rates_vec_full, fooling_rates_vec_valid, \
                 db_diff_max_vec , db_diff_max_vec_valid
 
 
