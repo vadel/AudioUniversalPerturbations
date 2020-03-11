@@ -20,12 +20,12 @@ We selected two different target models, based on the CNN structure proposed in 
 
 
 ### Target Model A
-This model achieves an an 85.2% Top One  Accuracy on the [test set](http://download.tensorflow.org/data/speech_commands_streaming_test_v0.02.tar.gz) of the Speech Command Dataset (2nd version). The training procedure is based on the code provided in [link](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/speech_commands). However, there are some modifications in order to ensure that the process is end-to-end differentiable, including the MFCC transformation.
+This model achieves an an 85.2% Top One  Accuracy on the test set of the Speech Command Dataset (2nd version). The training procedure is based on the code provided in [link](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/speech_commands). However, there are some modifications in order to ensure that the process is end-to-end differentiable, including the MFCC transformation.
 
 
 
 ### Target Model B
-This is a pretrained model accesible from [this link](http://download.tensorflow.org/models/speech_commands_v0.02.zip). It obtained an 82.5% Top One  Accuracy on the [test set](http://download.tensorflow.org/data/speech_commands_streaming_test_v0.02.tar.gz) of the Speech Command Dataset (2nd version).
+This is a pretrained model accesible from [this link](http://download.tensorflow.org/models/speech_commands_v0.02.zip). It obtained an 82.5% Top One  Accuracy on the test set of the Speech Command Dataset (2nd version).
 
 ## User guide
 The implementation has been implemented in Python 3.6.
