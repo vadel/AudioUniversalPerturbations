@@ -25,7 +25,7 @@ This model achieves an an 85.2% Top One  Accuracy on the [test set](http://downl
 
 
 ### Target Model B
-This is a pretrained model accesible from [this link](http://download.tensorflow.org/models/speech_commands_v0.02.zip). It obtained an 82.5% Top One  Accuracy on the [test set](http://download.tensorflow.org/data/speechcommandsstreamingtestv0.02.tar.gz) of the Speech Command Dataset (2nd version).
+This is a pretrained model accesible from [this link](http://download.tensorflow.org/models/speech_commands_v0.02.zip). It obtained an 82.5% Top One  Accuracy on the [test set](http://download.tensorflow.org/data/speech_commands_streaming_test_v0.02.tar.gz) of the Speech Command Dataset (2nd version).
 
 ## User guide
 The implementation has been implemented in Python 3.6.
