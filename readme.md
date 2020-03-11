@@ -7,7 +7,7 @@ by Jon Vadillo and Roberto Santana.
 ## Introduction
 In this work we address the generation of universal adversarial perturbations for Speech Command Classification. The attack approach used to create the universal perturbations (hereinafter referred to as UAP-HC algorithm) consists on a Hill-Climbing reformulation of the state-of-the-art method proposed by Moosavi-Dezfooli *et al*. in [3].
 
-We encourage the reader to listen to some of the adversarial examples generated, accessible in [our web](https://vadel.github.io/UniversalAdversarialPerturbations.html).
+We encourage the reader to listen to some of the adversarial examples generated, accessible in [our web](https://vadel.github.io/audio_adversarial/UniversalPerturbations.html).
 
 ## Dataset
 We used the [Speech Command Dataset](http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz) [1] (2nd version) as testbed to test our approach.  This dataset consists  on  aset of WAV audio files of 30 different spoken commands. The duration of all the files is fixed to 1 second, and the sample-rate is 16kHz in all the samples, so that each audio waveform is  composed  by 16000 values,  in  the  range [−2^15 , 2^15].   In the paper,  we used a subset of ten classes, those standard labels selected in previous publications: *”Yes”, ”No”, ”Up”, ”Down”, ”Left”, ”Right”, ”On”, ”Off”, ”Stop”,* and *”Go”*. In addition tothis  set,   consider ed two  special  classes:  *”Unknown”*  (a command different to the ones specified before) and *”Silence”* (no speech detected).
