@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     #TARGET MODEL PATH
     ####################
-    model_path = base_path + "models/my_frozen_graph_v2.pb"
+    model_path = base_path + "models/target_model_A.pb"
     print("Path of the target model: \t " + model_path)
 
 
