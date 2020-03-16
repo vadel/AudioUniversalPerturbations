@@ -37,7 +37,7 @@ The  script "Universal_perturbations_multi.py" contains the implementation of th
 - *dataset_path*: the path to the root directory of the training dataset. This directory must contain a folder for each possible class, each of them containing the inputs corresponding to that class.
 - *valid_dataset_path*: the path to the root directory of the validation set. This directory must contain a folder for each possible class, each of them containing the inputs corresponding to that class.
 - *input_filenames:* text file containing the relative paths (starting from the root of the training dataset) to the files that will be used to construct the perturbation. The file must contain one path per row.
-- *input_filenames:* text file containing the relative paths (starting from the root of the validation dataset) to the files that will be used to test the perturbation on unseen samples. The file must contain one path per row.
+- *valid_input_filenames:* text file containing the relative paths (starting from the root of the validation dataset) to the files that will be used to test the perturbation on unseen samples. The file must contain one path per row.
 - *overshoot* and *maxiter_df*:  respectively, the overshoot parameter of Deepfool algorithm and maximum number of iterations allowed for constructing a single individual (local) perturbation.
 - *maxiter_uni:* maximum number of iterations (epochs) allowed for UAP-HC algorithm.
 - *max_acc:*  accuracy threshold. The algorithm will stop when the accuracy of the model is below the threshold (on the training set).
